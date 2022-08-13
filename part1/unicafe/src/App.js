@@ -15,7 +15,10 @@ const Button=({updateGood,updateNeutral,updateBad})=>{
 const StatisticLine=({text,value})=>{
 
   return(
-    <p>{text}: {value}</p>
+    <>
+    <td>{text}</td>
+    <td>{value}</td>
+    </>
   )
 
 }
@@ -32,12 +35,31 @@ const Statistics =({good,neutral,bad})=>{
   }
   return(
     <div>
-        <StatisticLine text="good" value={good}/>
-        <StatisticLine text="neutral" value={neutral}/>
-        <StatisticLine text="bad" value={bad}/>
-        <p>all {`${good+neutral+bad}`}</p>
-        <p>average {`${(good*1+neutral*0+bad*(-1))/(good+neutral+bad)}`}</p>
-        <p>positive {`${good/(good+neutral+bad)*100}`} %</p>
+
+         <table>
+          <tr> <StatisticLine text="good" value={good}/></tr>
+          <tr><StatisticLine text="neutral" value={neutral}/></tr>
+          <tr><StatisticLine text="bad" value={bad}/></tr>
+
+          <tr>
+            <td>all</td>
+            <td>{`${good+neutral+bad}`}</td>
+          </tr>
+          <tr>
+            <td>average</td>
+            <td>{`${(good*1+neutral*0+bad*(-1))/(good+neutral+bad)}`}</td>
+          </tr>
+          <tr>
+            <td>positive</td>
+        
+            <td>{`${good/(good+neutral+bad)*100}`} %</td>
+          </tr>
+         </table>
+        
+        
+        
+        <p> </p>
+        <p> </p>
 
     </div>
   )
