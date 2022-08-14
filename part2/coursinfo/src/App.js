@@ -1,3 +1,39 @@
+
+
+
+const Header = ({ course }) => <h1>{course.name}</h1>
+
+const Total = ({ sum }) => <p>Number of exercises {sum}</p>
+
+const Part = ({ part }) => 
+  <p>
+    {part.name} {part.exercises}
+  </p>
+
+const Content = ({ parts }) => 
+  <>
+    <Part
+      part={parts[0]} 
+    />
+    <Part
+      part={parts[1]} 
+    />
+    <Part
+      part={parts[2]} 
+    /> 
+
+         
+  </>
+
+  const Course=({course})=>{
+    return(
+      <>
+      <Header course={course}/>
+      <Content parts={course.parts}/>
+      </>
+    )
+  }
+
 const App = () => {
   const course = {
     id: 1,
@@ -18,10 +54,12 @@ const App = () => {
         exercises: 14,
         id: 3
       }
+      
     ]
   }
 
   return <Course course={course} />
+
 }
 
 export default App
