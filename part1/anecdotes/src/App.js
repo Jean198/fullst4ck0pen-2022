@@ -12,8 +12,13 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
-  const[votes,setVotes]=useState(Object.assign({}, ...Object.entries({...(Array.from(Array(anecdotes.length).keys()))}).map(([a,b]) => ({ [b]: 0 }))))
-  console.log(votes)
+  //const[votes,setVotes]=useState(Object.assign({}, ...Object.entries({...(Array.from(Array(anecdotes.length).keys()))}).map(([a,b]) => ({ [b]: 0 }))))
+  const[votes,setVotes]=useState(Array.from(Array(anecdotes.length).keys()).map(Number.prototype.valueOf,0))
+  //console.log(votes)
+  const maximumVote=Math.max(...votes)
+  const maximumVoteIndex=votes.indexOf(maximumVote)
+  //console.log(maximumVote)
+  //console.log(maximumVoteIndex)
 
   const generateRandomAnecdote=()=>{
     
@@ -24,7 +29,7 @@ const App = () => {
 
   const makeVotes=()=>{
     
-    const copyVotes={...votes};
+    const copyVotes=[...votes];
     copyVotes[selected]+=1
     setVotes(copyVotes)
 
@@ -36,7 +41,16 @@ const App = () => {
     <>
     <div>
 
-      {anecdotes[selected]}
+      
+
+      <div>
+        <h1>Anecdote of the day</h1>
+        <p>
+        
+            {anecdotes[selected]}
+
+        </p>
+      </div>
       
       
    </div>
@@ -45,6 +59,17 @@ const App = () => {
    </div>
    <button onClick={makeVotes}>Vote</button>
    <button onClick={generateRandomAnecdote}>next anecdote</button>
+
+   <div>
+    <h1>Anecdote with most votes</h1>
+    <p>{anecdotes[maximumVoteIndex]}</p>
+    <p>
+      has {maximumVote} votes
+    </p>
+    <p>
+
+    </p>
+   </div>
     </>
   )
 }
