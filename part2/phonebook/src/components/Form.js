@@ -4,7 +4,7 @@ const Form = ({addName, handleNameChange, handlePhoneChange, newPhone, newName})
   return (
     <>
       <form  onSubmit={addName}>
-        <h2>add a new</h2>
+
         <div>
           name: <input value={newName} onChange={handleNameChange}/>
         </div>

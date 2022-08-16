@@ -1,18 +1,28 @@
 import Form from './components/Form'
 import Persons from './components/Persons'
 import SearchFilter from './components/SearchFilter'
+import axios from 'axios'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040-123456', id: 1 },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ])
+  const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone]=useState('')
   const [filteredPersons,setFilteredPersons]=useState(persons)
+
+
+  const hook=()=>{
+    axios.get('http://localhost:3001/persons')
+    .then(response=>{
+      setPersons(response.data)
+      setFilteredPersons(response.data)
+    })
+  }
+
+  useEffect(hook,[])
+
+
+
 
 
   const addName=(event)=>{
@@ -31,10 +41,11 @@ const App = () => {
   }
 
 
-  const filterPersons=(event)=>{
+  const filterPersons= (event)=>{
     const searchWord=event.target.value
     const filteredArray = persons.filter(person=>person.name.toLowerCase().includes((searchWord).toLowerCase()))
     setFilteredPersons(filteredArray)
+
   }
 
   const handleNameChange=(event)=>{
