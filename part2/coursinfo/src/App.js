@@ -29,7 +29,7 @@ const App = () => {
           id: 4
         }
       ]
-    }, 
+    },
     {
       name: 'Node.js',
       id: 2,
@@ -54,6 +54,7 @@ const App = () => {
 {
       course.map((singlecourse, index)=>{
         return(
+
           <Course key={index} singlecourse={singlecourse} />
         )
       })
