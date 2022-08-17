@@ -32,12 +32,22 @@ function App() {
 
  }
 
+ const showSpecificCountry = (event) =>{
+
+    const searchWord=event.target.id
+    const filteredArray = countries.filter(country=>country.name.common.toLowerCase().includes((searchWord).toLowerCase()))
+    setFilteredCountries(filteredArray)
+    console.log(event.target.id)
+
+ }
+
+
 
   return (
     <div className="App">
            <Header/>
            <SearchBar filterCountries={filterCountries}/>
-           <Countries filteredCountries={filteredCountries} />
+           <Countries filteredCountries={filteredCountries} showSpecificCountry={showSpecificCountry}/>
 
     </div>
   );

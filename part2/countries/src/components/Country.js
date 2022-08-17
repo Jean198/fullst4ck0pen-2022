@@ -1,8 +1,34 @@
 import React from 'react'
+import CountryView from './CountryView'
 
-const Country = () => {
+const Country = ({ filteredCountries, getBackGroundColor, showSpecificCountry }) => {
   return (
-    <div>country</div>
+
+    filteredCountries.length === 1 ? filteredCountries.map((country, index) => {
+      return (
+        <>
+          <CountryView country={country} index={index}/>
+        </>
+      )
+    }) :
+
+      <div className='many-countries'>
+        {filteredCountries.map((country, index) => {
+          return (
+
+            <div className={`country-line-${getBackGroundColor(index)}`}>
+
+              {country.name.common}
+              <button id={country.name.common} onClick={showSpecificCountry}>Show</button>
+
+            </div>
+
+          )
+        }
+        )}
+      </div>
+
+
   )
 }
 

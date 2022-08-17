@@ -56,7 +56,7 @@ code {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 0.25rem;
     background-color: white;
-    padding: 10px;
+
 }
 
 .single-country img{
@@ -87,12 +87,14 @@ span{
 
   margin-top: 5px;
   background-color: white;
+  padding: 10px;
 }
 
 .country-line-blue{
 
   margin-top: 5px;
   background-color: lightblue;
+  padding: 10px;
 
 }
 
