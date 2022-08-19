@@ -59,7 +59,7 @@ code {
 
 }
 
-.single-country img{
+ .single-country .country-image{
 
     width: 100%;
     height:auto;
@@ -96,6 +96,11 @@ span{
   background-color: lightblue;
   padding: 10px;
 
+}
+
+.single-country .weather-image{
+  width: 5vw;
+  height: auto;
 }
 
 @media screen and (max-width: 1200px) {

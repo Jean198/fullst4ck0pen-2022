@@ -11,6 +11,7 @@ function App() {
   const[filteredCountries, setFilteredCountries]=useState([])
 
 
+
   useEffect(()=>{
 
     axios.get("https://restcountries.com/v3.1/all")
@@ -18,8 +19,16 @@ function App() {
       setCountries(response.data)
 
 
+
+
     })
+
+
   }, [])
+
+
+
+
 
  const filterCountries=(event)=>{
     const searchWord=event.target.value
@@ -37,17 +46,22 @@ function App() {
     const searchWord=event.target.id
     const filteredArray = countries.filter(country=>country.name.common.toLowerCase().includes((searchWord).toLowerCase()))
     setFilteredCountries(filteredArray)
-    console.log(event.target.id)
+    setCountryName(event.target.id)
+
 
  }
 
 
 
+
+
   return (
     <div className="App">
+           <div>{countryName}</div>
+
            <Header/>
            <SearchBar filterCountries={filterCountries}/>
-           <Countries filteredCountries={filteredCountries} showSpecificCountry={showSpecificCountry}/>
+           <Countries filteredCountries={filteredCountries} showSpecificCountry={showSpecificCountry} />
 
     </div>
   );

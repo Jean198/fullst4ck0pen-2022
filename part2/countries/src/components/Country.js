@@ -1,7 +1,7 @@
 import React from 'react'
 import CountryView from './CountryView'
 
-const Country = ({ filteredCountries, getBackGroundColor, showSpecificCountry }) => {
+const Country = ({ filteredCountries, getBackGroundColor, showSpecificCountry}) => {
   return (
 
     filteredCountries.length === 1 ? filteredCountries.map((country, index) => {

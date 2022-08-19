@@ -1,7 +1,7 @@
 import React from 'react'
 import Country from './Country'
 
-const Countries = ({ filteredCountries, showSpecificCountry }) => {
+const Countries = ({ filteredCountries, showSpecificCountry, countryWeatherData }) => {
 
     const getBackGroundColor = (num) => {
         let color
@@ -17,7 +17,7 @@ const Countries = ({ filteredCountries, showSpecificCountry }) => {
     return (
         <div>
             {filteredCountries.length > 10 ? <div>Too many matches, specify another filter</div> :
-                (<Country filteredCountries={filteredCountries} getBackGroundColor={getBackGroundColor} showSpecificCountry={showSpecificCountry} />
+                (<Country filteredCountries={filteredCountries} getBackGroundColor={getBackGroundColor} showSpecificCountry={showSpecificCountry} countryWeatherData={countryWeatherData} />
 
 
                 )}
