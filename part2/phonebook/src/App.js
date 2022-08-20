@@ -36,8 +36,16 @@ const App = () => {
          }
          setPersons(persons.concat(newPerson))
          setFilteredPersons(filteredPersons.concat(newPerson))
+
+          axios
+          .post('http://localhost:3001/persons', newPerson)
+          .then(response => {
+
+    })
        }
        setNewName('');
+
+
   }
 
 
