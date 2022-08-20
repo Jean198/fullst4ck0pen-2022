@@ -6,15 +6,13 @@ const CountryView = ({country, index}) => {
   const[countryWeatherData, setCountryWeatherData]=useState([])
 
   useEffect(()=>{
-    axios.get(`http://api.weatherstack.com/current?access_key=be50a23b1c1ac1b3ee61189c9a3b6f5d&query=${country.capital}`)
+    axios.get(`http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_API_KEY}&query=${country.capital}`)
     .then(response=>{
       setCountryWeatherData(response.data)
 
     })
   }, [country])
 
-
-console.log(countryWeatherData)
 
   return (
     <div key={index} className="single-country">

@@ -16,7 +16,7 @@ const Country = ({ filteredCountries, getBackGroundColor, showSpecificCountry}) 
         {filteredCountries.map((country, index) => {
           return (
 
-            <div className={`country-line-${getBackGroundColor(index)}`}>
+            <div className={`country-line-${getBackGroundColor(index)}`} key={index}>
 
               {country.name.common}
               <button id={country.name.common} onClick={showSpecificCountry}>Show</button>

@@ -46,7 +46,7 @@ function App() {
     const searchWord=event.target.id
     const filteredArray = countries.filter(country=>country.name.common.toLowerCase().includes((searchWord).toLowerCase()))
     setFilteredCountries(filteredArray)
-    setCountryName(event.target.id)
+
 
 
  }
@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div className="App">
-           <div>{countryName}</div>
+
 
            <Header/>
            <SearchBar filterCountries={filterCountries}/>
