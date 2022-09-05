@@ -18,6 +18,7 @@ const App = () => {
     personService
       .getAll()
       .then(response => {
+
         setPersons(response.data)
         setFilteredPersons(response.data)
       })
@@ -26,31 +27,35 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault()
+    /*
     if (persons.some(person => person.name === newName)) {
       alert(`${newName} is already added to phonebook`)
     } else {
+      */
       const newPerson = {
         name: newName,
         number: newPhone
       }
-      setPersons(persons.concat(newPerson))
+      //setPersons(persons.concat(newPerson))
       setFilteredPersons(filteredPersons.concat(newPerson))
       personService.create(newPerson)
       setMessage(`Added ${newPerson.name}`)
       setTimeout(()=>{setMessage(null)}, 3000)
-    }
+
+  //  }
     setNewName('');
 
 
 
   }
+
   const deletePerson = (id) => {
-
-    const person = persons.find((p) => parseInt(p.id) === id);
+   console.log(id)
+    const person = persons.find((p) =>p.id === id);
     if (person) {
-      if (window.confirm(`Delete ${person.name}?`)) {
+      if (window.confirm(`Delete ${person.name} id ${id}?`)) {
 
-        axios.delete(`http://localhost:3001/persons/${id}`)
+        axios.delete(`http://localhost:3001/api/persons/${id}`)
           .then((response) => {
 
             personService.getAll()
@@ -67,6 +72,38 @@ const App = () => {
 
      }
   };
+
+  const updatePerson=(id)=> {
+    const person = persons.find((p) =>p.id === id);
+
+    if(person){
+      const newPerson = {
+        name: newName,
+        number: newPhone
+      }
+
+
+      if (window.confirm(`Replace ${person.name} with ${newPerson.name} ?`)){
+        axios.put(`http://localhost:3001/api/persons/${id}`, newPerson)
+        .then((response) => {
+
+          personService.getAll()
+            .then((response) => {
+              setPersons(response.data)
+              setFilteredPersons(response.data)
+            })
+        }).catch((e)=>{
+          setFailureMessage(`Information of ${person.name} has already been removed from the server`)
+          setTimeout(()=>{setFailureMessage(null)}, 3000)
+
+        })
+
+
+      }
+
+    }
+  }
+
   const filterPersons = (event) => {
     const searchWord = event.target.value
     const filteredArray = persons.filter(person => person.name.toLowerCase().includes((searchWord).toLowerCase()))
@@ -86,7 +123,7 @@ const App = () => {
       <h3>add a new</h3>
       <Form addName={addName} handleNameChange={handleNameChange} handlePhoneChange={handlePhoneChange} newPhone={newPhone} newName={newName} />
       <h2>Numbers</h2>
-      <Persons filteredPersons={filteredPersons} deletePerson={deletePerson} />
+      <Persons filteredPersons={filteredPersons} deletePerson={deletePerson} updatePerson={updatePerson}/>
     </div>
   )
 }

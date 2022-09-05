@@ -5,7 +5,7 @@ const Countries = ({ filteredCountries, showSpecificCountry, countryWeatherData 
 
     const getBackGroundColor = (num) => {
         let color
-        if (num % 2 !== 0) {
+        if (num % 2 !==s 0) {
             color = "white"
         } else {
             color = "blue"
